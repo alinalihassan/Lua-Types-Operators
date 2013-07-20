@@ -142,4 +142,8 @@ __index = function(str,i)
    argCheck(str, "number", 1, "string indexing")
    return string.sub(str,i,i) 
 end
+
+--Preventing the change of Lua Types
+__metatable = error("Protected Lua Types") 
+
 } )
