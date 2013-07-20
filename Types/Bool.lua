@@ -12,8 +12,13 @@ __unm = function(bool)
    return (not bool)
 end
 
+--tostring(false) == "false"
+__tostring = function(bool) 
+   argCheck(bool, "boolean", 1, "boolean tostring");
+   return(bool == true and "true" or "false")  
+end
+
 --Preventing the change of Lua Types
 __metatable = error("Protected Lua Types") 
-
 
 })
