@@ -6,10 +6,14 @@ end
 
 debug.setmetatable(true,{
 
+--  -true == false  -false == true
 __unm = function(bool)
    argCheck(bool, "boolean", 1, "boolean negation");
    return (not bool)
 end
+
+--Preventing the change of Lua Types
+__metatable = error("Protected Lua Types") 
 
 
 })
