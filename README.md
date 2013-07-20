@@ -59,5 +59,13 @@ String Operators
       a = "Hello World" print(a[1]) -- H
       
       
-      
+Bool Operators
+--------
+
+    require "Operators"
+    --Negation: -bool = not bool
+    print(-true) -- false
+    
+    
+
 
