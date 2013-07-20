@@ -4,15 +4,16 @@ local function argCheck(var, t, argNum, funcName)
    assert(type(var) == t, "bad argument #"..argNum.." to "..funcName.." ("..t.." expected, got "..type(var)..")");
 end
 
+debug.setmetatable("", {
 -- Concatenation: s1 + s2 = s1..s2
-getmetatable("").__add = function (s1, s2)
+__add = function (s1, s2)
    argCheck(s1, "string", 1, "string addition");
    argCheck(s2, "string", 2, "string addition");
    return tostring(s1)..tostring(s2);
 end
 
 -- Gsub: s1 - s2 = s1:gsub(s2, "");
-getmetatable("").__sub = function (s1, s2)
+__sub = function (s1, s2)
    argCheck(s1, "string", 1, "string subtraction");
    argCheck(s2, "string", 2, "string subtraction");
    return string.gsub(tostring(s1), tostring(s2), "");
@@ -21,7 +22,7 @@ end
 -- Repititon: "x" * y = ("x"):rep(y);
 -- If y is negative then reverses string
 -- "Hello" * -2 = "olleHolleH"
-getmetatable("").__mul = function (s, t)
+__mul = function (s, t)
    if type(s)== "string" and type(t)== "number" then
       argCheck(s, "string", 1, "string multiplication");
       argCheck(t, "number", 2, "string multiplication");
@@ -42,7 +43,7 @@ getmetatable("").__mul = function (s, t)
 end
 
 -- Split into a table: "Hello World" / " " = {"Hello", "World"}
-getmetatable("").__div = function (str, split)
+__div = function (str, split)
    argCheck(str, "string", 1, "string division");
    argCheck(split, "string", 2, "string division");
    local tbl = { };
@@ -54,7 +55,7 @@ getmetatable("").__div = function (str, split)
 end
 
 -- Reverses: -"Hello" = "olleH"
-getmetatable("").__unm = function (str)
+__unm = function (str)
    argCheck(str, "string", 1, "string negation");
    return tostring(str) * -1;
 end
@@ -63,7 +64,7 @@ end
 -- stringVariable("start:finish:increment")
 -- or stringVariable{"start:finish:increment"}
 -- Or normal string.sub calling without increment
-getmetatable("").__call = function (str, ...)
+__call = function (str, ...)
    argCheck(str, "string", 1, "string slicing call");
    str = tostring(str);
    local slices = {...};
@@ -99,7 +100,7 @@ getmetatable("").__call = function (str, ...)
 end
 
 -- "My string is %lol" % {lol = "yay"}
-getmetatable("").__mod = function (str, tbl)
+__mod = function (str, tbl)
    argCheck(str, "string", 1, "string interpolation");
    argCheck(tbl, "table", 2, "string interpolation");
    return tostring(str):gsub("%%([%w_]+)", function (v)
@@ -111,7 +112,7 @@ end
 
 -- for i,v in pairs "Hello" do print(v)
 --H e l l o
-getmetatable("").__pairs = function(str)
+__pairs = function(str)
    argCheck(str, "string", 1, "string pairs");
    local i,n = 0,#s
    return function()
@@ -124,7 +125,7 @@ end
 
 -- for i,v in ipairs "Hello" do print(v)
 --H e l l o
-getmetatable("").__ipairs = function(str)
+__ipairs = function(str)
    argCheck(str, "string", 1, "string ipairs");
    local i,n = 0,#s
    return function()
@@ -137,7 +138,8 @@ end
 
 -- a = "Hello" 
 --print a[1] -- H
-getmetatable('').__index = function(str,i)
+__index = function(str,i)
    argCheck(str, "number", 1, "string indexing")
    return string.sub(str,i,i) 
 end
+} )
