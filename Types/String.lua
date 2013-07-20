@@ -1,4 +1,4 @@
-module(package.seeall,...)
+module(...,package.seeall)
 
 local function argCheck(var, t, argNum, funcName)
    assert(type(var) == t, "bad argument #"..argNum.." to "..funcName.." ("..t.." expected, got "..type(var)..")");
