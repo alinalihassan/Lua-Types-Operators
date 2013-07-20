@@ -1,9 +1,9 @@
 Lua-Types-Operators
 ===================
 _______________________________________________________________
-Module: Operators
+Module: Types Operators
 
-Version: 0.1
+Version: 0.5
 
 Purpose: Adding operators for lua types
 
