@@ -1,3 +1,3 @@
-module(package.seall,...)
+module(package.seeall,...)
 
 require'Types/String'
