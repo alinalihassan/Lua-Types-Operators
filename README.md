@@ -3,7 +3,7 @@ Lua-Types-Operators
 _______________________________________________________________
 Module: Types Operators
 
-Version: 0.5
+Version: 1.0
 
 Purpose: Adding operators for lua types
 
@@ -17,9 +17,10 @@ _______________________________________________________________
 Features
 --------
 
-- Under 150 lines with comments
-- With this script now you can use operators for strings like in python
-- Less code writing and a better string manipulation
+- Under 250 lines with comments
+- With this script now you can use operators for strings,booleans,threads,nil and functions
+- You can costumize them for your own needs
+- Less code writing
 - Examples for each function in the main script
 
 
