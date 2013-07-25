@@ -193,6 +193,7 @@ Functions
 
 debug.setmetatable(function() end, {__metatable = nil})
 
+--Preventing the change of Lua Types
 debug.getmetatable(function() end).__metatable = function()
 	return nil 
 end
@@ -209,6 +210,7 @@ Nil
 
 debug.setmetatable(nil, {__metatable = nil})
 
+--Preventing the change of Lua Types
 debug.getmetatable(nil).__metatable = function()
 	return nil 
 end
@@ -225,6 +227,7 @@ Threads
 
 debug.setmetatable(coroutine.create(function() end), {__metatable = nil})
 
+--Preventing the change of Lua Types
 debug.getmetatable(coroutine.create(function() end)).__metatable = function()
 	return nil 
 end
