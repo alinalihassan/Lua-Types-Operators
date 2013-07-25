@@ -55,6 +55,7 @@ String Operators
     
     --Pairs and Ipairs
       for i,v in pairs "Hello" do print(i,v) end -- 1,H | 2,e | 3,l | 4,l| 5,o|
+      for i,v in ipairs "Hello" do print(i,v) end -- 1,H | 2,e | 3,l | 4,l| 5,o|
 
     --Indexing
       a = "Hello World" print(a[1]) -- H
